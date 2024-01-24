@@ -23,6 +23,11 @@ class Feed{
 		$this->title = $title;
 	}
 
+	public function setCurrency($currency = "EUR")
+	{
+		$this->currency = $currency;
+	}
+	
 	public function setDescription($description = "")
 	{
 		$this->description = $description;
