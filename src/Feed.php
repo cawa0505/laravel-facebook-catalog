@@ -49,8 +49,8 @@ class Feed{
         $sale_price     = null,
 		$brand 			= "",
 		$gtin 			= "",
-		$shipping		= [],
 		// Optional
+		$shipping		= [],
 		$condition 		= "new",
 		$product_type	= NULL,
 		$custom_fields	= NULL
@@ -65,12 +65,15 @@ class Feed{
             "g:condition" 		=> $condition,
             "g:availability" 	=> $availability,
             "g:price" 			=> number_format($price, 2, ".", ",") . " " . $this->currency,
-            "g:shipping"			=> [
+		];
+
+		if (!empty($shipping)) {
+			$product['g:shipping'] = [
 				"g:country"			=> $shipping['country'],
 				"g:service"			=> $shipping['service'],
 				"g:price"				=> $shipping['price'],
-			],
-		];
+			];
+		}
 
         if (!is_null($sale_price)) {
             $product['g:sale_price'] = number_format($sale_price, 2, ".", ",") . " " . $this->currency;
